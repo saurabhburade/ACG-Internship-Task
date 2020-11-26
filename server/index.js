@@ -5,6 +5,7 @@ const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose");
 const formRoutes = require("./routes/form.routes");
+const PORT = process.env.PORT || 8000
 require("dotenv").config();
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -38,6 +39,6 @@ if (process.env.NODE_ENV == "production") {
     });
 }
 
-app.listen(8000, () => {
-    console.log("Server is 🔥 ");
+app.listen(PORT, () => {
+    console.log(`Server is 🔥 PORT : ${PORT}` );
 });
