@@ -29,13 +29,8 @@ app.use(morgan("combined"));
 app.use(express.json());
 app.use("/acg/api", formRoutes);
 
-app.get("/login", (req, res) => {
-    console.log(req.body);
-    res.send("hitting /login route");
-});
-
 app.use("/products/public/uploads/", express.static("public/uploads"));
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client", "build")));
     app.get("*", (req, res) => {
         res.sendFile(

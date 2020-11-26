@@ -7,7 +7,6 @@ const fetchData = (req, res) => {
         })
         .catch(err => {
             console.log(err);
-
             res.status(400).json("Failed to fetch data");
         });
 };
@@ -63,8 +62,6 @@ const deleteData = (req, res) => {
     const {_id} = req.headers;
     Form.deleteOne({_id})
         .then(delObject => {
-            console.log(delObject);
-
             if (delObject.n) {
                 res.status(200).json("Data deleted successfully");
             }
