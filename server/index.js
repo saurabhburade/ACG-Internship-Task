@@ -3,20 +3,17 @@ const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const formRoutes = require("./routes/form.routes");
 require("dotenv").config();
 const MONGO_URI = process.env.MONGO_URI;
-app.use(cors());
-app.use(morgan("combined"));
-app.use(express.json());
-
 
 mongoose.connect(
     MONGO_URI,
     {
         useUnifiedTopology: true,
         useNewUrlParser: true,
-        dbName:"ACG",
+        dbName: "ACG",
     },
     err => {
         if (err) {
@@ -27,11 +24,15 @@ mongoose.connect(
     }
 );
 
-app.post("/login", (req, res) => {
+app.use(cors());
+app.use(morgan("combined"));
+app.use(express.json());
+app.use("/acg/api", formRoutes);
+
+app.get("/login", (req, res) => {
     console.log(req.body);
     res.send("hitting /login route");
 });
-
 
 app.use("/products/public/uploads/", express.static("public/uploads"));
 if (process.env.NODE_ENV !== "production") {
