@@ -1,0 +1,48 @@
+body,
+html {
+    padding: 0em;
+    margin: 0em;
+}
+.App {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+}
+.main-container {
+    width: auto;
+    align-items: center;
+    padding: 2%;
+}
+.main-container > form,
+.main-container > div {
+    padding: 5%;
+    height: 100%;
+    background-color: white;
+}
+.main-container > form > div {
+    margin: 4% 0%;
+}
+.main-container > div {
+    padding: 2%;
+    margin: 1%;
+    width: 70%;
+    height: 20em;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.loader {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.171);
+}
+.loader > img {
+    width: 10%;
+}
